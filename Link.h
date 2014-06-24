@@ -6,7 +6,7 @@ private:
 	Vertex from;
 	Vertex to;
 	int id;
-	std::string type;
+	string type;
 public:
 	Link(void);
 	~Link(void);

@@ -19,27 +19,27 @@ void Vertex::setId(int id)
 {
 	this->id = id;
 }
-std::string Vertex::getName() const
+string Vertex::getName() const
 {
 	return this->name;
 }
-void Vertex::setName(std::string name)
+void Vertex::setName(string name)
 {
 	this->name = name;
 }
-std::string Vertex::getType() const
+string Vertex::getType() const
 {
 	return this->type;
 }
-void Vertex::setType(std::string type)
+void Vertex::setType(string type)
 {
 	this->type = type;
 }
-std::string Vertex::getLabel() const
+string Vertex::getLabel() const
 {
 	return this->label;
 }
-void Vertex::setLabel(std::string label)
+void Vertex::setLabel(string label)
 {
 	this->label = label;
 }

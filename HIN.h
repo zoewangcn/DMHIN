@@ -2,11 +2,12 @@
 #include "Vertex.h"
 #include "Link.h"
 #include <vector>
+using std::vector;
 class HIN
 {
 private:
-	std::vector<Vertex> vs;
-	std::vector<Link> ls;
+	vector<Vertex> vs;
+	vector<Link> ls;
 public:
 	HIN(void);
 	~HIN(void);
