@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 using std::string;
+using std::endl;
 class Vertex
 {
 private:
@@ -20,5 +21,6 @@ public:
 	void setType(string type);
 	string getLabel() const;
 	void setLabel(string label);
+	void print();
 };
 

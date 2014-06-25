@@ -11,5 +11,7 @@
 #include <tchar.h>
 #include <string.h>
 
-
 // TODO: 在此处引用程序需要的其他头文件
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>

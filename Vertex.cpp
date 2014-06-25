@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "Stdafx.h"
 #include "Vertex.h"
 
 
@@ -42,4 +42,8 @@ string Vertex::getLabel() const
 void Vertex::setLabel(string label)
 {
 	this->label = label;
+}
+void Vertex::print()
+{
+	 << "" << end
 }
