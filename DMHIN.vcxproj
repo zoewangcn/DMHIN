@@ -77,6 +77,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DBConnection.h" />
     <ClInclude Include="HIN.h" />
     <ClInclude Include="Link.h" />
     <ClInclude Include="stdafx.h" />
@@ -84,6 +85,7 @@
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DBConnection.cpp" />
     <ClCompile Include="DMHIN.cpp" />
     <ClCompile Include="HIN.cpp" />
     <ClCompile Include="Link.cpp" />
