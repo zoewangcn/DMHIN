@@ -1,6 +1,7 @@
 #include "Stdafx.h"
 #include "Vertex.h"
-
+#include <iostream>
+using std::cout;
 
 Vertex::Vertex(void)
 {
@@ -45,5 +46,5 @@ void Vertex::setLabel(string label)
 }
 void Vertex::print()
 {
-	 << "" << end
+	 cout << "" << endl;
 }

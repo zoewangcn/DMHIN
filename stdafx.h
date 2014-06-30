@@ -15,3 +15,5 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
+#include "winsock.h"
+#include "mysql.h"
