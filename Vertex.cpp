@@ -1,7 +1,6 @@
-#include "Stdafx.h"
+#include "StdAfx.h"
 #include "Vertex.h"
-#include <iostream>
-using std::cout;
+
 
 Vertex::Vertex(void)
 {
@@ -12,39 +11,35 @@ Vertex::~Vertex(void)
 {
 }
 
-int Vertex::getId() const
-{
-	return this->id;
-}
-void Vertex::setId(int id)
+void Vertex::setId(string id)
 {
 	this->id = id;
 }
-string Vertex::getName() const
+string Vertex::getId()
 {
-	return this->name;
+	return this->id;
 }
 void Vertex::setName(string name)
 {
 	this->name = name;
 }
-string Vertex::getType() const
+string Vertex::getName()
 {
-	return this->type;
+	return this->name;
 }
 void Vertex::setType(string type)
 {
 	this->type = type;
 }
-string Vertex::getLabel() const
+string Vertex::getType()
 {
-	return this->label;
+	return this->type;
 }
 void Vertex::setLabel(string label)
 {
 	this->label = label;
 }
-void Vertex::print()
+string Vertex::getLabel()
 {
-	 cout << "" << endl;
+	return this->label;
 }

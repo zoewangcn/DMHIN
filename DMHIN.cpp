@@ -1,24 +1,15 @@
 // DMHIN.cpp : 定义控制台应用程序的入口点。
-// Author Zoe ZY.Wang
+// Author Wang Ziyi
 
 #include "stdafx.h"
-#include "Vertex.h"
-#include "Link.h"
-#include "HIN.h"
-#include "DBConnection.h"
-HIN network;
-const float lamuda = 0.2;
-const float a = 0.1;
-void readData()
-{
+#include "DataImpoter.h"
 
-}
-void rankClass(HIN hin, float lamuda, float a)
-{
-
-}
 int _tmain(int argc, _TCHAR* argv[])
 {
+	DataImpoter *di = new DataImpoter;
+	HIN *hin = new HIN;
+	*hin = di->readFiles("data/");
+	delete hin;
+	delete di;
 	return 0;
 }
-

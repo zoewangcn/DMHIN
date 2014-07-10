@@ -1,26 +1,22 @@
 #pragma once
 #include <string>
 using std::string;
-using std::endl;
 class Vertex
 {
 private:
-	int id;
+	string id;
 	string name;
 	string type;
 	string label;
 public:
 	Vertex(void);
-	Vertex(int id, string name, string type, string label):id(id), name(name), type(type), label(label){};
 	~Vertex(void);
-	int getId() const;
-	void setId(int id);
-	string getName() const;
+	void setId(string id);
+	string getId();
 	void setName(string name);
-	string getType() const;
+	string getName();
 	void setType(string type);
-	string getLabel() const;
+	string getType();
 	void setLabel(string label);
-	void print();
+	string getLabel();
 };
-
