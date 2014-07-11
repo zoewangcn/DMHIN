@@ -16,7 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -28,13 +27,16 @@
     <ClInclude Include="Vertex.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Link.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="HIN.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DBConnection.h">
+    <ClInclude Include="DataImpoter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RankClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RMatrix.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,14 +50,17 @@
     <ClCompile Include="Vertex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Link.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="HIN.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DBConnection.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="DataImpoter.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RankClass.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RMatrix.cpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

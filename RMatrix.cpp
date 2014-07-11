@@ -5,6 +5,14 @@ RMatrix::RMatrix(void)
 {
 }
 
+RMatrix::RMatrix(int rowNum, int colNum)
+{
+	for(int i = 0; i < rowNum; i++)
+	{
+		vector<float> tmp(colNum, 0);
+		this->matrix.push_back(tmp);
+	}
+}
 
 RMatrix::~RMatrix(void)
 {

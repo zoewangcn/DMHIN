@@ -7,6 +7,7 @@ class DataImpoter
 public:
 	DataImpoter(void);
 	~DataImpoter(void);
+	vector<int> generateRandomSeq(int n, float ratio);
 	HIN readFiles(string filePath);
 };
 

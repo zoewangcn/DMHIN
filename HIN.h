@@ -9,21 +9,27 @@ class HIN
 private:
 	int m; //number of types
 	vector<vector <Vertex> > X; //m types, data object
-	vector<vector<RMatrix> > RMatrixs; //ith type -- jth type
+	vector<vector<RMatrix> > rMatrixs; //ith type -- jth type
 	int k; //number of classes
 	vector<vector <Vertex> > classes; //k classes
 	map<string, int> type_index;
+	vector<map<int, string> > index_id;
+	vector<map<string, int> > id_index;
 public:
 	HIN(void);
 	~HIN(void);
 	void setX(vector<vector <Vertex> > X);
 	vector<vector <Vertex> > getX();
-	void setRMatrixs(vector<vector<RMatrix> > RMatrixs);
+	void setRMatrixs(vector<vector<RMatrix> > rMatrixs);
 	vector<vector<RMatrix> > getRMatrixs();
 	void setClasses(vector<vector <Vertex> > classes);
 	vector<vector <Vertex> > getClasses();
 	void setType_index(map<string, int> type_index);
 	map<string, int> getType_index();
+	void setId_index(vector<map<string, int> > id_index);
+	vector<map<string, int> > getId_index();
+	void setIndex_id(vector<map<int, string> > index_id);
+	vector<map<int, string> > getIndex_id();
 	void setM(int m);
 	int getM();
 	void setK(int k);

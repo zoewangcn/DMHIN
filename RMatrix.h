@@ -8,6 +8,7 @@ private:
 	vector<vector<float> > matrix;
 public:
 	RMatrix(void);
+	RMatrix(int rowNum, int colNum);
 	~RMatrix(void);
 	void setMatrix(vector<vector<float> > matrix);
 	vector<vector<float> > getMatrix();

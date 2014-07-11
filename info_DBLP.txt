@@ -1,0 +1,4 @@
+author.txt,conf.txt,paper.txt
+author_label.txt,conf_label.txt,paper_label.txt
+paper_author.txt,paper_conf.txt
+author:0.05,paper:0.05

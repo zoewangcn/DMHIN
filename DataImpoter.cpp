@@ -2,13 +2,19 @@
 #include "DataImpoter.h"
 #include <iostream>
 #include <fstream>
+#include <set>
+#include <algorithm>
 #define MAXSIZE_BUF 5000
 #define LINENUM 3
 #define LABEL_NUM 4
+#define MAX_TYPE_NUM 20000
+#define LINE_LIMIT 3000
 using std::ifstream;
 using std::cerr;
 using std::endl;
 using std::cout;
+using std::set;
+using std::sort;
 
 DataImpoter::DataImpoter(void)
 {
@@ -19,18 +25,42 @@ DataImpoter::~DataImpoter(void)
 {
 }
 
+vector<int> DataImpoter::generateRandomSeq(int n, float ratio)
+{
+	vector<int> randomArr;
+	for(int i = 0; i < n; i++)
+	{
+		randomArr.push_back(-1);
+	}
+	for(int i = 0; i < n; i++)
+	{
+		int index = rand() % n;
+	}
+	return randomArr;
+}
+
 HIN DataImpoter::readFiles(string filePath)
 {
-	HIN *hin = new HIN;
+	HIN *hin;
+	try
+	{
+		hin = new HIN;
+	}
+	catch (std::bad_alloc)
+	{
+		cerr << "HIN creating has alloc exception" << endl;
+	}
 	const string labels[LABEL_NUM] = {"Database", "Data Mining", "AI", "Information Retrieval"};
 	//read info file in order to get file types
 	ifstream info;
-	info.open("info.txt");
+	info.open("info_DBLP.txt");
 	char *buf;
 	vector<char*> infoStr;
 	vector<string> objectFileList;
 	vector<string> labelFileList;
 	vector<string> linkFileList;
+	vector<string> ratioList;
+	map<string, float> type_ratio;
 	int lineCount = 0;
 	if(!info)
 	{
@@ -68,6 +98,20 @@ HIN DataImpoter::readFiles(string filePath)
 		linkFileList.push_back(tmp);
 		tmp = strtok(NULL, split);
 	}
+	tmp = strtok(infoStr[3], split);
+	const char *split_INSTR = ":";
+	while(tmp != NULL)
+	{
+		ratioList.push_back(tmp);	
+		tmp = strtok(NULL, split);
+	}
+	for(vector<string>::size_type i = 0; i != ratioList.size(); ++i)
+	{
+		char *type = strtok(const_cast<char*>(ratioList[i].c_str()), split_INSTR);
+		char *ratio = strtok(NULL, split_INSTR);
+		type_ratio[type] = atof(ratio);
+	}
+	ratioList.clear();
 	infoStr.clear();
 	delete[] buf;
 	cout << "####################################################" << endl;
@@ -78,8 +122,12 @@ HIN DataImpoter::readFiles(string filePath)
 	//read data objects
 	vector<vector <Vertex> > X;
 	map<string, int> type_index;
+	vector<map<int, string> > index_id;
+	vector<map<string, int> > id_index;
 	for(vector<string>::size_type i = 0; i != objectFileList.size(); ++i)
 	{
+		map<int, string> cur_index_id;
+		map<string, int> cur_id_index;
 		ifstream in;
 		in.open(filePath.c_str() + objectFileList[i]);
 		char *fileName = const_cast<char*>(objectFileList[i].c_str());
@@ -91,8 +139,15 @@ HIN DataImpoter::readFiles(string filePath)
 		}
 		else
 		{
+			int line = 0;
+			int tmpIndex = 0;
 			while(!in.eof())
 			{
+				++line;
+				if(line > LINE_LIMIT)
+				{
+					break;
+				}
 				buf = new char[MAXSIZE_BUF];
 				in.getline(buf, MAXSIZE_BUF);
 				char *id = strtok(buf, split_TAB);
@@ -102,14 +157,22 @@ HIN DataImpoter::readFiles(string filePath)
 				v->setName(name);
 				v->setType(type);
 				curTypeX.push_back(*v);
+				cur_index_id[tmpIndex] = id;
+				cur_id_index[id] = tmpIndex++;
 			}
 		}
 		in.close();
 		X.push_back(curTypeX);
 		type_index[type] = i;
+		id_index.push_back(cur_id_index);
+		index_id.push_back(cur_index_id);
 	}
 	delete[] buf;
+	objectFileList.clear();
 	cout << "Finish read objects!" << endl;
+	hin->setM(type_index.size());
+	hin->setId_index(id_index);
+	hin->setIndex_id(index_id);
 
 	//read labels
 	for(vector<string>::size_type i = 0; i != labelFileList.size(); ++i)
@@ -147,10 +210,16 @@ HIN DataImpoter::readFiles(string filePath)
 		in.close();
 	}
 	delete[] buf;
+	labelFileList.clear();
 	cout << "Finish read labels!" << endl;
+	hin->setK(LABEL_NUM);
+	hin->setX(X);
 
+	//read links
+	vector<vector<RMatrix> > rMatrixs;
+	RMatrix tmpRMatrixs[4][4];
 	for(vector<string>::size_type k = 0; k != linkFileList.size(); ++k)
-	{
+	{ 
 		ifstream in;
 		in.open(filePath.c_str() + linkFileList[k]);
 		char *fileName = const_cast<char*>(linkFileList[k].c_str());
@@ -159,41 +228,72 @@ HIN DataImpoter::readFiles(string filePath)
 		string typej = strtok(NULL, split_LINE);
 		int i = type_index[typei];
 		int j = type_index[typej];
-		vector<Vertex> curTypeVi = X[i];
-		vector<Vertex> curTypeVj = X[j];
-		map<string, string> id_label;
+		int rowNum = X[i].size();
+		int colNum = X[j].size();
+		RMatrix *rMatrix;
+		try
+		{
+			rMatrix = new RMatrix(rowNum, colNum);
+		}
+		catch (std::bad_alloc)
+		{
+			cerr << "RMatrix creating has alloc exception" << endl;
+		}
 		if(!in)
 		{
 			cerr << "Error: unable to open links file: " << in << endl;
 		}
 		else
 		{
-			int line = 0;
 			while(!in.eof())
 			{
-				++line;
 				buf = new char[MAXSIZE_BUF];
 				in.getline(buf, MAXSIZE_BUF);
-				char *i = strtok(buf, split_TAB);
-				char *j = strtok(NULL, split_TAB);
-				if(i == NULL)
+				char *id_i = strtok(buf, split_TAB);
+				char *id_j = strtok(NULL, split_TAB);
+				if(id_index[i].count(id_i) && id_index[j].count(id_j))
 				{
-					cout << "null i" << endl;
-					cout << line << endl;
-				}
-				if(j == NULL)
-				{
-					cout << "null j" << endl;
-					cout << line << endl;
+					int index_i = id_index[i][id_i];
+					int index_j = id_index[j][id_j];
+					rMatrix->setElement(index_i, index_j, 1);
 				}
 			}
 		}
 		in.close();
+		try
+		{
+			tmpRMatrixs[i][j] = *rMatrix;
+		}
+		catch (std::bad_alloc)
+		{
+			cerr << "temp RMatrix creating has alloc exception" << endl;
+		}
 	}
+	RMatrix *nrx = new RMatrix;
+	for(int i = 0; i < hin->getM(); i++)
+	{
+		vector<RMatrix> curRV;
+		for(int j = 0; j < hin->getM(); j++)
+		{
+			curRV.push_back(*nrx);
+		}
+		rMatrixs.push_back(curRV);
+	}
+	for(int i = 0; i < hin->getM(); i++)
+	{
+		for(int j = 0; j < hin->getM(); j++)
+		{
+			if(i != j)
+			{
+				rMatrixs[i][j] = tmpRMatrixs[i][j];
+			}
+		}
+	}
+	delete nrx;
 	delete[] buf;
+	linkFileList.clear();
 	cout << "Finish read links!" << endl;
-
-	//set HIN
+	hin->setRMatrixs(rMatrixs);
 
 	return *hin;
 }
