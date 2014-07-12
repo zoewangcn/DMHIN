@@ -122,6 +122,7 @@ HIN DataImpoter::readFiles(string filePath)
 	//read data objects
 	vector<vector <Vertex> > X;
 	map<string, int> type_index;
+	map<int, string> index_type;
 	vector<map<int, string> > index_id;
 	vector<map<string, int> > id_index;
 	for(vector<string>::size_type i = 0; i != objectFileList.size(); ++i)
@@ -164,6 +165,7 @@ HIN DataImpoter::readFiles(string filePath)
 		in.close();
 		X.push_back(curTypeX);
 		type_index[type] = i;
+		index_type[i] = type;
 		id_index.push_back(cur_id_index);
 		index_id.push_back(cur_index_id);
 	}
@@ -171,10 +173,14 @@ HIN DataImpoter::readFiles(string filePath)
 	objectFileList.clear();
 	cout << "Finish read objects!" << endl;
 	hin->setM(type_index.size());
+	hin->setType_index(type_index);
+	hin->setIndex_type(index_type);
 	hin->setId_index(id_index);
 	hin->setIndex_id(index_id);
 
 	//read labels
+	map<string, int> label_index;
+	map<int, string> index_label;
 	for(vector<string>::size_type i = 0; i != labelFileList.size(); ++i)
 	{
 		ifstream in;
@@ -199,20 +205,31 @@ HIN DataImpoter::readFiles(string filePath)
 				id_label[id] = label;
 			}
 		}
+		int labeled_data_num = 0;
 		for(vector<Vertex>::iterator iter = curTypeV.begin(); iter != curTypeV.end(); ++iter)
 		{
 			string curId = iter->getId();
 			if(id_label.count(curId))
 			{
 				iter->setLabel(id_label[curId]);
+				labeled_data_num++;
 			}
 		}
+		cout << type << "'s labeled objects number: " << labeled_data_num << endl;
 		in.close();
+		X[type_index[type]] = curTypeV;
 	}
 	delete[] buf;
 	labelFileList.clear();
+	for(int i = 0; i < LABEL_NUM; i++)
+	{
+		label_index[labels[i]] = i;
+		index_label[i] = labels[i];
+	}
 	cout << "Finish read labels!" << endl;
 	hin->setK(LABEL_NUM);
+	hin->setIndex_label(index_label);
+	hin->setLabel_index(label_index);
 	hin->setX(X);
 
 	//read links
@@ -294,6 +311,33 @@ HIN DataImpoter::readFiles(string filePath)
 	linkFileList.clear();
 	cout << "Finish read links!" << endl;
 	hin->setRMatrixs(rMatrixs);
+
+	//read classes
+	vector<vector<Vertex> > classes;
+	for(int i = 0; i < hin->getK(); i++)
+	{
+		char theLabel[10];
+		sprintf(theLabel, "%d", i);
+		vector<Vertex> curClass;
+		vector<vector<Vertex> > XX = hin->getX();
+		for(vector<vector<Vertex> >::iterator typeIter = XX.begin(); 
+			typeIter != XX.end(); ++typeIter)
+		{
+			vector<Vertex> curTypeObjs = *typeIter;
+			for(vector<Vertex>::iterator objIter = curTypeObjs.begin();
+				objIter != curTypeObjs.end(); ++objIter)
+			{
+				Vertex v = *objIter;
+				if(v.getLabel() == theLabel)
+				{
+					curClass.push_back(v);
+				}
+			}
+		}
+		classes.push_back(curClass);
+	}
+	hin->setClasses(classes);
+	cout << "Finish read classes!" << endl;
 
 	return *hin;
 }

@@ -1,16 +1,10 @@
-﻿生成启动时间为 7/11/2014 8:11:03 PM。
+﻿生成启动时间为 7/12/2014 2:47:19 PM。
      1>项目“D:\VS_workspace\DMHIN\DMHIN\DMHIN.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
          正在创建“Debug\DMHIN.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         d:\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\DMHIN.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         d:\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\DMHIN.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DataImpoter.cpp DMHIN.cpp HIN.cpp RankClass.cpp RMatrix.cpp Vertex.cpp
-         Vertex.cpp
-         RMatrix.cpp
-         RankClass.cpp
-         HIN.cpp
-         DMHIN.cpp
+         所有输出均为最新。
+         d:\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\DMHIN.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DataImpoter.cpp
          DataImpoter.cpp
      1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(83): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
@@ -33,31 +27,32 @@
      1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(111): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
      1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(112): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(134): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(153): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(135): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
      1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(154): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(183): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(155): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(196): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(189): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(197): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(202): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(198): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(203): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(226): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(204): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(227): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(243): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(228): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(244): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(252): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(245): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(253): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(269): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
-         正在生成代码...
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(270): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\microsoft visual studio 10.0\vc\include\string.h(197) : 参见“strtok”的声明
+     1>d:\vs_workspace\dmhin\dmhin\dataimpoter.cpp(320): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\microsoft visual studio 10.0\vc\include\stdio.h(371) : 参见“sprintf”的声明
        Link:
          d:\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\VS_workspace\DMHIN\Debug\DMHIN.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\DMHIN.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\VS_workspace\DMHIN\Debug\DMHIN.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\VS_workspace\DMHIN\Debug\DMHIN.lib" /MACHINE:X86 Debug\DataImpoter.obj
          Debug\DMHIN.obj
@@ -76,4 +71,4 @@
 
 生成成功。
 
-已用时间 00:00:11.98
+已用时间 00:00:04.78
