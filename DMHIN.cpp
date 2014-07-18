@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "DataImpoter.h"
+#include "RankClass.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -11,8 +12,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	*hin = di->readFiles("data/");
 	hin->printInfo();
 	RankClass *rankClass = new RankClass;
-	rankClass->setHIN(hin);
-	rankClass->init();
+	rankClass->setHIN(*hin);
+	rankClass->init(0.2, 0.1);
 	delete rankClass;
 	delete hin;
 	delete di;

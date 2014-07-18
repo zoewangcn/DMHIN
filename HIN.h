@@ -11,7 +11,7 @@ private:
 	vector<vector <Vertex> > X; //m types, data object
 	vector<vector<RMatrix> > rMatrixs; //ith type -- jth type
 	int k; //number of classes
-	vector<vector <Vertex> > classes; //k classes
+	vector<map<int, vector<Vertex> > > classes; //k classes
 	map<string, int> type_index;
 	map<int, string> index_type;
 	vector<map<int, string> > index_id;
@@ -25,8 +25,8 @@ public:
 	vector<vector <Vertex> > getX();
 	void setRMatrixs(vector<vector<RMatrix> > rMatrixs);
 	vector<vector<RMatrix> > getRMatrixs();
-	void setClasses(vector<vector <Vertex> > classes);
-	vector<vector <Vertex> > getClasses();
+	void setClasses(vector<map<int, vector<Vertex> > > classes);
+	vector<map<int, vector<Vertex> > > getClasses();
 	void setType_index(map<string, int> type_index);
 	map<string, int> getType_index();
 	void setIndex_type(map<int, string> index_type);

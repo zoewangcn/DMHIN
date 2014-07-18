@@ -8,7 +8,7 @@
 #define LINENUM 3
 #define LABEL_NUM 4
 #define MAX_TYPE_NUM 20000
-#define LINE_LIMIT 3000
+#define LINE_LIMIT 300
 using std::ifstream;
 using std::cerr;
 using std::endl;
@@ -248,9 +248,11 @@ HIN DataImpoter::readFiles(string filePath)
 		int rowNum = X[i].size();
 		int colNum = X[j].size();
 		RMatrix *rMatrix;
+		RMatrix *rMatrix_r;
 		try
 		{
 			rMatrix = new RMatrix(rowNum, colNum);
+			rMatrix_r = new RMatrix(colNum, rowNum);
 		}
 		catch (std::bad_alloc)
 		{
@@ -273,6 +275,7 @@ HIN DataImpoter::readFiles(string filePath)
 					int index_i = id_index[i][id_i];
 					int index_j = id_index[j][id_j];
 					rMatrix->setElement(index_i, index_j, 1);
+					rMatrix_r->setElement(index_j, index_i, 1);
 				}
 			}
 		}
@@ -280,6 +283,7 @@ HIN DataImpoter::readFiles(string filePath)
 		try
 		{
 			tmpRMatrixs[i][j] = *rMatrix;
+			tmpRMatrixs[j][i] = *rMatrix_r;
 		}
 		catch (std::bad_alloc)
 		{
@@ -298,12 +302,10 @@ HIN DataImpoter::readFiles(string filePath)
 	}
 	for(int i = 0; i < hin->getM(); i++)
 	{
-		for(int j = 0; j < hin->getM(); j++)
+		for(int j = i + 1; j < hin->getM(); j++)
 		{
-			if(i != j)
-			{
-				rMatrixs[i][j] = tmpRMatrixs[i][j];
-			}
+			rMatrixs[i][j] = tmpRMatrixs[i][j];
+			rMatrixs[j][i] = tmpRMatrixs[j][i];
 		}
 	}
 	delete nrx;
@@ -313,13 +315,15 @@ HIN DataImpoter::readFiles(string filePath)
 	hin->setRMatrixs(rMatrixs);
 
 	//read classes
-	vector<vector<Vertex> > classes;
+	vector<map<int, vector<Vertex> > > classes;
 	for(int i = 0; i < hin->getK(); i++)
 	{
+		map<int, vector<Vertex>> typeIndex_objs;
 		char theLabel[10];
 		sprintf(theLabel, "%d", i);
 		vector<Vertex> curClass;
 		vector<vector<Vertex> > XX = hin->getX();
+		int typeIndex = 0;
 		for(vector<vector<Vertex> >::iterator typeIter = XX.begin(); 
 			typeIter != XX.end(); ++typeIter)
 		{
@@ -333,8 +337,10 @@ HIN DataImpoter::readFiles(string filePath)
 					curClass.push_back(v);
 				}
 			}
+			typeIndex_objs[typeIndex++] = curClass;
+			curClass.clear();
 		}
-		classes.push_back(curClass);
+		classes.push_back(typeIndex_objs);
 	}
 	hin->setClasses(classes);
 	cout << "Finish read classes!" << endl;

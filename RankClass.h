@@ -9,14 +9,16 @@ private:
 	int t; //number of iteration
 	float lamda[MAXN_DO][MAXN_DO]; //performing feature selection
 	float a[MAXN_DO]; //contribution weight
-	RMatrix S[MAXN_DO][MAXN_DO]; //relation matrix
-	map<string, float> RDs[MAXT]; //ranking distribution
+	RMatrix S[MAXN_DO][MAXN_DO]; //relation matrix (normalized)
+	map<string, float> RDs[MAXT]; //ranking distribution key:[id-class]
 public:
 	RankClass(void);
 	~RankClass(void);
-	void init();
+	void init(float ll, float aa); //ll-lamda, aa-a
 	void process();
-	void setHIN(HIN hin);
+	void setHIN(const HIN& hin);
 	HIN getHIN();
+	void adjustNetwork(HIN& hin);
+	RMatrix multipleMatrix(RMatrix ra, RMatrix rb);
 };
 

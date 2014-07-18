@@ -13,11 +13,11 @@ HIN::~HIN(void)
 {
 }
 
-void HIN::setX(vector<vector <Vertex> > X)
+void HIN::setX(vector<vector<Vertex> > X)
 {
 	this->X = X;
 }
-vector<vector <Vertex> > HIN::getX()
+vector<vector<Vertex> > HIN::getX()
 {
 	return this->X;
 }
@@ -29,11 +29,11 @@ vector<vector<RMatrix> > HIN::getRMatrixs()
 {
 	return this->rMatrixs;
 }
-void HIN::setClasses(vector<vector <Vertex> > classes)
+void HIN::setClasses(vector<map<int, vector<Vertex> > > classes)
 {
 	this->classes = classes;
 }
-vector<vector <Vertex> > HIN::getClasses()
+vector<map<int, vector<Vertex> > > HIN::getClasses()
 {
 	return this->classes;
 }
@@ -113,11 +113,16 @@ void HIN::printInfo()
 	}
 	cout << endl;
 	cout << "Classes (total " << this->getK() << "): ";
-	for(vector<vector<Vertex> >::size_type i = 0; i != this->getClasses().size(); i++)
+	for(vector<map<int, vector<Vertex> > >::size_type i = 0; i != this->getClasses().size(); ++i)
 	{
-		vector<Vertex> curClass = this->getClasses()[i];
+		map<int, vector<Vertex> > curClass = this->getClasses()[i];
 		string label = this->getIndex_label()[i];
-		cout << label << "[" << curClass.size() << "]" << " ";
+		cout << label << "{";
+		for(map<int, vector<Vertex> >::size_type j = 0; j != curClass.size(); ++j)
+		{
+			cout << "[" << this->getIndex_type()[j] << "(" << curClass[j].size() << ")" << "]" << " ";
+		}
+		cout << "} ";
 	}
 	cout << endl;
 }
