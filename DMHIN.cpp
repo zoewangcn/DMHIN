@@ -13,7 +13,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	hin->printInfo();
 	RankClass *rankClass = new RankClass;
 	rankClass->setHIN(*hin);
-	rankClass->init(0.2, 0.1);
+	rankClass->init(0.2f, 0.1f);
+	rankClass->process(0.01f);
 	delete rankClass;
 	delete hin;
 	delete di;

@@ -22,7 +22,7 @@ void RMatrix::setMatrix(vector<vector<float> > matrix)
 {
 	this->matrix = matrix;
 }
-vector<vector<float> > RMatrix::getMatrix()
+vector<vector<float> > RMatrix::getMatrix() const
 {
 	return this->matrix;
 }
@@ -30,7 +30,7 @@ void RMatrix::setElement(int i, int j, float value)
 {
 	this->matrix[i][j] = value;
 }
-float RMatrix::getElement(int i, int j)
+float RMatrix::getElement(int i, int j) const
 {
 	return this->matrix[i][j];
 }

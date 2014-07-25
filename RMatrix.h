@@ -11,9 +11,9 @@ public:
 	RMatrix(int rowNum, int colNum);
 	~RMatrix(void);
 	void setMatrix(vector<vector<float> > matrix);
-	vector<vector<float> > getMatrix();
+	vector<vector<float> > getMatrix() const;
 	void setElement(int i, int j, float value);
-	float getElement(int i, int j);
+	float getElement(int i, int j) const;
 	void resetMatrix();
 };
 

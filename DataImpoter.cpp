@@ -8,7 +8,7 @@
 #define LINENUM 3
 #define LABEL_NUM 4
 #define MAX_TYPE_NUM 20000
-#define LINE_LIMIT 300
+#define LINE_LIMIT 500
 using std::ifstream;
 using std::cerr;
 using std::endl;
@@ -50,7 +50,7 @@ HIN DataImpoter::readFiles(string filePath)
 	{
 		cerr << "HIN creating has alloc exception" << endl;
 	}
-	const string labels[LABEL_NUM] = {"Database", "Data Mining", "AI", "Information Retrieval"};
+	const string labels[LABEL_NUM] = {"DB", "DM", "AI", "IR"};
 	//read info file in order to get file types
 	ifstream info;
 	info.open("info_DBLP.txt");
